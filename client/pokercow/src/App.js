@@ -1,6 +1,7 @@
 import './App.css';
 import io from 'socket.io-client';
 import { useEffect, useState } from 'react';
+import Table from "./assets/Table.png";
 
 const socket = io.connect('http://localhost:3001');
 
@@ -43,6 +44,7 @@ function App() {
       <button onClick={sendMessage}>Send Message</button>
       <h1>Message:</h1>
       <p>{messageReceived}</p>
+      <img className="pokertable" src={Table}></img>
     </div>
   );
 }
