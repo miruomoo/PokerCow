@@ -1,7 +1,9 @@
 import './App.css';
 import io from 'socket.io-client';
 import { useEffect, useState } from 'react';
-import Table from "./assets/Table.png";
+
+import Landing from "./components/Landing.js";
+import Game from "./components/Game.js";
 
 const socket = io.connect('http://localhost:3001');
 
@@ -10,41 +12,26 @@ function App() {
   const [inRoom, setInRoom] = useState(false);
   const [message, setMessage] = useState("");
   const [messageReceived, setMessageReceived] = useState("");
-
-  function sendMessage() {
-    socket.emit("send_message", { message, room });
-  }
-
-  function joinRoom() {
-    socket.emit("join_room", room);
-    setInRoom(true);
-  }
+  const [nickname, setNickname] = useState("Guest");
 
   useEffect(() => {
     socket.on("receive_message", (data) => {
-      setMessageReceived(data.message)
+      setMessageReceived(`${data.playerName} : ${data.message}`)
     })
   }, [socket])
 
   return (
     <div className='App'>
-      {!inRoom && <div className='room-input'>
-        <input placeholder='Enter Room Number'
-          onChange={(event) => {
-            setRoom(event.target.value)
-          }}></input>
-        <button onClick={joinRoom}>Join</button>
-      </div>}
-      {inRoom && <h1>Room: {room}</h1>}
-      <input placeholder='Message...' onChange={(event) => {
-        setMessage(event.target.value)
-      }
-      }
-      ></input>
-      <button onClick={sendMessage}>Send Message</button>
-      <h1>Message:</h1>
-      <p>{messageReceived}</p>
-      <img className="pokertable" src={Table}></img>
+      {!inRoom && <Landing inRoom={inRoom} setRoom={setRoom} setInRoom={setInRoom} socket={socket} room={room} setNickname={setNickname}></Landing>}
+      <Game 
+      socket={socket}
+      room={room}
+      messageReceived={messageReceived}
+      message={message}
+      setMessage={setMessage} 
+      inRoom={inRoom}
+      playerName={nickname}
+      ></Game>
     </div>
   );
 }

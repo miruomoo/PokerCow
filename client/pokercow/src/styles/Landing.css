@@ -1,0 +1,8 @@
+.landing-input{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    flex-direction: column;
+    margin-top: 10%;
+}
