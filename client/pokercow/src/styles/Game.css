@@ -1,12 +1,13 @@
 
 .chatbox{
-    background-color: white;
-    min-height: 200px;
+    background-color: rgb(255, 255, 255);
+    height: 200px;
     width: 400px;
     overflow: scroll;
     overflow-x: hidden;
-    border: solid;
+    border: solid grey;
     border-radius: 5px;
+    border-width: 2px;
     margin-bottom: 5px;
     text-align: left;
 }
@@ -28,4 +29,36 @@
 .text-input{
     width: 280px;
     background-color: wheat;
+    border-color: grey !important;
+}
+
+.message-title{
+    background-color: wheat;
+    border-radius: 10px;
+    border: 2px solid grey;
+}
+
+.message{
+    margin-left: 5px;
+}
+
+.handback{
+    cursor: pointer;
+    max-width: 150px;
+    position: absolute;
+    top: 50%;
+    right: 45%;
+}
+
+.card {
+    max-height: 200px;
+    max-width: 150px;
+    margin: 0;
+}
+
+.hand {
+    position: absolute;
+    top: 50%;
+    right: 40%;
+    display: flex;
 }
