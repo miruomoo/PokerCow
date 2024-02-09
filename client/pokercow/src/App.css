@@ -3,9 +3,20 @@
 }
 
 body{
-  background-image: url("./assets/Background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-image: url("./assets/Background.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  color: black !important;
+}
+
+button{
+  background-color: rgb(255, 255, 255) !important;
+  color: black !important;
+}
+
+input{
+  border-color: black !important;
+  color: black !important;
 }
 
 .App-logo {

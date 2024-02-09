@@ -1,8 +1,26 @@
+@import url("http://fxaeberhard.github.io/handdrawn.css/handdrawn.css");
+
 .landing-input{
     display: flex;
     align-items: center;
     text-align: center;
-    min-height: 100vh;
     flex-direction: column;
     margin-top: 10%;
+}
+
+.join-button{
+    margin-top: 10px;
+    width: 100px;
+    height: 50px;
+    font-size: 25px;
+}
+
+.join-button:hover{
+    background-color: rgb(255, 237, 240) !important;
+}
+
+.input-style{
+    font-size: medium;
+    width: 250px !important;
+    height: 30px;
 }
