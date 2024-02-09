@@ -1,3 +1,5 @@
+@import url("http://fxaeberhard.github.io/handdrawn.css/handdrawn.css");
+
 .App {
   text-align: center;
 }
@@ -52,12 +54,4 @@ input{
   to {
     transform: rotate(360deg);
   }
-}
-
-.pokertable{
-  z-index: -1;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }

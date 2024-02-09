@@ -1,0 +1,31 @@
+
+.chatbox{
+    background-color: white;
+    min-height: 200px;
+    width: 400px;
+    overflow: scroll;
+    overflow-x: hidden;
+    border: solid;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+.chatroom{
+    position: absolute;
+    top: 60%;
+}
+
+.pokertable{
+    max-width: 70%;
+    z-index: -1;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+.text-input{
+    width: 280px;
+    background-color: wheat;
+}

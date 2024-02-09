@@ -17,9 +17,10 @@ function App() {
 
   useEffect(() => {
     socket.on("receive_message", (data) => {
-      setMessagesReceived([...messagesReceived, `${data.playerName} : ${data.message}`]);
-    })
-  }, [socket])
+      setMessagesReceived(messagesReceived => [...messagesReceived, `${data.playerName} : ${data.message}`]);
+    });
+    return () => socket.off('recieve_message').off();
+  }, [])
 
   return (
     <div className='App'>
@@ -28,6 +29,7 @@ function App() {
       socket={socket}
       room={room}
       messagesReceived={messagesReceived}
+      setMessagesReceived={setMessagesReceived}
       message={message}
       setMessage={setMessage} 
       inRoom={inRoom}
