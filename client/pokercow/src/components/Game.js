@@ -1,7 +1,7 @@
 
 import Table from "../assets/Table.png";
 
-function Game({ socket, room, messageReceived, message, setMessage, inRoom, playerName}) {
+function Game({ socket, room, messagesReceived, message, setMessage, inRoom, playerName}) {
 
     function sendMessage() {
         socket.emit("send_message", { message, room, playerName });
@@ -17,8 +17,12 @@ function Game({ socket, room, messageReceived, message, setMessage, inRoom, play
         }
         ></input>
         <button onClick={sendMessage}>Send Message</button>
-        < h1 > Message:</h1 >
-        <p>{messageReceived}</p>
+        < h1 > Messages:</h1 >
+        <div className="chatbox">
+            {messagesReceived.length? messagesReceived.map((message)=>
+                (<p>{message}</p>)
+            ):<p></p>}
+        </div>
         <img className="pokertable" src={Table} alt="pokertable"></img>
     </div>}
     </>

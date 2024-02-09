@@ -11,12 +11,13 @@ function App() {
   const [room, setRoom] = useState("");
   const [inRoom, setInRoom] = useState(false);
   const [message, setMessage] = useState("");
-  const [messageReceived, setMessageReceived] = useState("");
+  const [messagesReceived, setMessagesReceived] = useState("");
   const [nickname, setNickname] = useState("Guest");
+ 
 
   useEffect(() => {
     socket.on("receive_message", (data) => {
-      setMessageReceived(`${data.playerName} : ${data.message}`)
+      setMessagesReceived([...messagesReceived, `${data.playerName} : ${data.message}`]);
     })
   }, [socket])
 
@@ -26,7 +27,7 @@ function App() {
       <Game 
       socket={socket}
       room={room}
-      messageReceived={messageReceived}
+      messagesReceived={messagesReceived}
       message={message}
       setMessage={setMessage} 
       inRoom={inRoom}
