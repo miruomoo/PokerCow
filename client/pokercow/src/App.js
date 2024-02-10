@@ -34,6 +34,7 @@ function App() {
       setMessage={setMessage} 
       inRoom={inRoom}
       playerName={nickname}
+      setInRoom={setInRoom}
       ></Game>
     </div>
   );
