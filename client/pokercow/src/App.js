@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     socket.on("receive_message", (data) => {
-      setMessagesReceived(messagesReceived => [...messagesReceived, `${data.playerName} : ${data.message}`]);
+      setMessagesReceived(messagesReceived => [...messagesReceived, {class:"message_receiving", message:`${data.playerName} : ${data.message}`}]);
     });
     return () => socket.off('recieve_message').off();
   }, [])

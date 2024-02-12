@@ -38,8 +38,14 @@
     border: 2px solid grey;
 }
 
-.message{
+.message_receiving{
     margin-left: 5px;
+    color: brown;
+}
+
+.message_sending{
+    margin-left: 5px;
+    color: black;
 }
 
 .handback{

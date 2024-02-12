@@ -13,6 +13,7 @@ function Game({ socket, room, messagesReceived, setMessagesReceived, message, se
 
     const [peek, setPeek] = useState(false);
     const [leaving, setLeaving] = useState(false);
+    const [running, setRunning] = useState(false);
 
     function peekHand() {
         setPeek(true);
@@ -24,19 +25,21 @@ function Game({ socket, room, messagesReceived, setMessagesReceived, message, se
     function sendMessage(event) {
         event.preventDefault();
         socket.emit("send_message", { message, room, playerName });
-        setMessagesReceived([...messagesReceived, `${playerName} : ${message}`]);
+        setMessagesReceived([...messagesReceived, {class:"message_sending", message:`${playerName} : ${message}`}]);
         setMessage("");
     }
 
-    function handleLeaveRoom(){
+    function handleLeaveRoom() {
         setInRoom(false);
+        //clears chatbox
+        setMessagesReceived([]);
     }
 
-    function handleLeaving(){
+    function handleLeaving() {
         setLeaving(true);
     }
 
-    function handleNotLeaving(){
+    function handleNotLeaving() {
         setLeaving(false);
     }
 
@@ -48,7 +51,7 @@ function Game({ socket, room, messagesReceived, setMessagesReceived, message, se
                     <h1 className="message-title"> Messages:</h1 >
                     <div className="chatbox">
                         {messagesReceived.length ? messagesReceived.map((message, index) =>
-                            (<p className="message" key={index}>{message}</p>)
+                            (<p key={index} className={message.class}>{message.message}</p>)
                         ) : <p></p>}
                     </div>
                     <form onSubmit={sendMessage}>
@@ -61,14 +64,17 @@ function Game({ socket, room, messagesReceived, setMessagesReceived, message, se
                     </form>
                 </div>
                 <img className="pokertable" src={table} alt="pokertable"></img>
-                {!peek && <img className="handback" src={handback} onMouseEnter={peekHand}
-                ></img>}
-                {peek && <div className="hand" onMouseLeave={hideHand}>
-                    <img className="card" alt="handcard-1" src={twos}></img>
-                    <img className="card" alt="handcard-2" src={sevenh}></img>
-                </div>}
-                {!leaving&&<img class="leaveroom" src={leaveroom} alt="leave-room" onMouseEnter={handleLeaving}></img>}
-                {leaving&&<img class="leaveroom" src={leaveroom_hover} alt="leave-room" onClick={handleLeaveRoom} onMouseLeave={handleNotLeaving}></img>}
+                {running && <>
+                    {!peek && <img className="handback" src={handback} onMouseEnter={peekHand}
+                    ></img>}
+                    {peek && <div className="hand" onMouseLeave={hideHand}>
+                        <img className="card" alt="handcard-1" src={twos}></img>
+                        <img className="card" alt="handcard-2" src={sevenh}></img>
+                    </div>}
+                </>
+                }
+                {!leaving && <img class="leaveroom" src={leaveroom} alt="leave-room" onMouseEnter={handleLeaving}></img>}
+                {leaving && <img class="leaveroom" src={leaveroom_hover} alt="leave-room" onClick={handleLeaveRoom} onMouseLeave={handleNotLeaving}></img>}
             </div>}
         </>
     )
