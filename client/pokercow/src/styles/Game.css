@@ -74,7 +74,7 @@
 .leaveroom{
     cursor: pointer;
     position: absolute;
-    top: 90%;
+    top: 88%;
     left: 50%;
     max-width: 200px;
     transform: translate(-50%, -50%);

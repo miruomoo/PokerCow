@@ -36,12 +36,12 @@ io.on("connection", (socket)=>{
             playerHand2:"king_s"
         };
 
-        const randomCard1 = gameDeck[Math.floor(Math.random() * gameDeck.length)];
-        hand.playerHand1 = gameDeck[0].id;
+        // const randomCard1 = gameDeck[Math.floor(Math.random() * gameDeck.length)];
+        // hand.playerHand1 = randomCard1.id;
         // gameDeck.splice(randomCard1, 1);
 
-        const randomCard2 = gameDeck[Math.floor(Math.random() * gameDeck.length)];
-        hand.playerHand2 = gameDeck[1].id;
+        // const randomCard2 = gameDeck[Math.floor(Math.random() * gameDeck.length)];
+        // hand.playerHand2 = randomCard2.id;
         // gameDeck.splice(randomCard2, 1);
 
         console.log(hand);
