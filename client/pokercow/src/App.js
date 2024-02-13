@@ -18,10 +18,11 @@ function App() {
   useEffect(() => {
     socket.on("receive_message", (data) => {
       setMessagesReceived(messagesReceived => [...messagesReceived, {class:"message_receiving", message:`${data.playerName} : ${data.message}`}]);
+      console.log(data.playerName);
     });
     return () => socket.off('recieve_message').off();
   }, [])
-
+  
   return (
     <div className='App'>
       {!inRoom && <Landing inRoom={inRoom} setRoom={setRoom} setInRoom={setInRoom} socket={socket} room={room} setNickname={setNickname}></Landing>}

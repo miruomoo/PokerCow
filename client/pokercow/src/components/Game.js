@@ -1,10 +1,25 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import table from "../assets/Table.png";
 import handback from "../assets/handback.png";
 import "../styles/Game.css";
-import twos from "../assets/cards/2s.png";
+
+import two_s from "../assets/cards/2s.png";
+import three_s from "../assets/cards/3s.png";
+import four_s from "../assets/cards/4s.png";
+import five_s from "../assets/cards/5s.png";
+import six_s from "../assets/cards/6s.png";
+import seven_s from "../assets/cards/7s.png";
+import eight_s from "../assets/cards/8s.png";
+import nine_s from "../assets/cards/9s.png";
+import ten_s from "../assets/cards/10s.png";
+import jack_s from "../assets/cards/js.png";
+import queen_s from "../assets/cards/qs.png";
+import king_s from "../assets/cards/ks.png";
+import ace_s from "../assets/cards/as.png";
+
 import sevenh from "../assets/cards/7h.png";
+
 import leaveroom from "../assets/leaveroom.png";
 import leaveroom_hover from "../assets/leaveroom_hover.png";
 
@@ -18,10 +33,9 @@ function Game({ socket, room, messagesReceived, setMessagesReceived, message, se
 
     useEffect(() => {
         socket.on("receive_game_start", (data) => {
-          setHand([data.playerHand1, data.playerHand2])
+            console.log(data.playerHand1);
         });
-        setRunning(true);
-      }, [])
+    }, [])
 
     function peekHand() {
         setPeek(true);
@@ -52,7 +66,7 @@ function Game({ socket, room, messagesReceived, setMessagesReceived, message, se
     }
 
     function startGame(){
-        socket.emit("start_game");
+        socket.emit("start_game", {room});
     }
 
     return (
@@ -80,13 +94,14 @@ function Game({ socket, room, messagesReceived, setMessagesReceived, message, se
                     {!peek && <img className="handback" src={handback} onMouseEnter={peekHand}
                     ></img>}
                     {peek && <div className="hand" onMouseLeave={hideHand}>
-                        <img className="card" alt="handcard-1" src={twos}></img>
-                        <img className="card" alt="handcard-2" src={sevenh}></img>
+                        <img className="card" alt="handcard-1" src={hand[0]}></img>
+                        <img className="card" alt="handcard-2" src={hand[1]}></img>
                     </div>}
                 </>
                 }
-                {!leaving && <img class="leaveroom" src={leaveroom} alt="leave-room" onMouseEnter={handleLeaving}></img>}
-                {leaving && <img class="leaveroom" src={leaveroom_hover} alt="leave-room" onClick={handleLeaveRoom} onMouseLeave={handleNotLeaving}></img>}
+                {!leaving && <img className="leaveroom" src={leaveroom} alt="leave-room" onMouseEnter={handleLeaving}></img>}
+                {leaving && <img className="leaveroom" src={leaveroom_hover} alt="leave-room" onClick={handleLeaveRoom} onMouseLeave={handleNotLeaving}></img>}
+                <button onClick={startGame}>Deal Now</button>
             </div>}
         </>
     )

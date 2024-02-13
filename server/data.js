@@ -1,163 +1,163 @@
 const deck = [
     {
-        "id": "ac"
+        "id": "ace_c" 
     },
     {
-        "id": "2c"
+        "id": "two_c"
     },
     {
-        "id": "3c"
+        "id": "three_c"
     },
     {
-        "id": "4c"
+        "id": "four_c"
     },
     {
-        "id": "5c"
+        "id": "five_c"
     },
     {
-        "id": "6c"
+        "id": "six_c"
     },
     {
-        "id": "7c"
+        "id": "seven_c"
     },
     {
-        "id": "8c"
+        "id": "eight_c"
     },
     {
-        "id": "9c"
+        "id": "nine_c"
     },
     {
-        "id": "10c"
+        "id": "ten_c"
     },
     {
-        "id": "jc"
+        "id": "jack_c"
     },
     {
-        "id": "qc"
+        "id": "queen_c"
     },
     {
-        "id": "kc"
+        "id": "king_c"
     },
     {
-        "id": "as"
+        "id": "ace_s"
     },
     {
-        "id": "2s"
+        "id": "two_s"
     },
     {
-        "id": "3s"
+        "id": "three_s"
     },
     {
-        "id": "4s"
+        "id": "four_s"
     },
     {
-        "id": "5s"
+        "id": "five_s"
     },
     {
-        "id": "6s"
+        "id": "six_s"
     },
     {
-        "id": "7s"
+        "id": "seven_s"
     },
     {
-        "id": "8s"
+        "id": "eight_s"
     },
     {
-        "id": "9s"
+        "id": "nine_s"
     },
     {
-        "id": "10s"
+        "id": "ten_s"
     },
     {
-        "id": "js"
+        "id": "jack_s"
     },
     {
-        "id": "qs"
+        "id": "queen_s"
     },
     {
-        "id": "ks"
+        "id": "king_s"
     },
     {
-        "id": "ah"
+        "id": "ace_h"
     },
     {
-        "id": "2h"
+        "id": "two_h"
     },
     {
-        "id": "3h"
+        "id": "three_h"
     },
     {
-        "id": "4h"
+        "id": "four_h"
     },
     {
-        "id": "5h"
+        "id": "five_h"
     },
     {
-        "id": "6h"
+        "id": "six_h"
     },
     {
-        "id": "7h"
+        "id": "seven_h"
     },
     {
-        "id": "8h"
+        "id": "eight_h"
     },
     {
-        "id": "9h"
+        "id": "nine_h"
     },
     {
-        "id": "10h"
+        "id": "ten_h"
     },
     {
-        "id": "jh"
+        "id": "jack_h"
     },
     {
-        "id": "qh"
+        "id": "queen_h"
     },
     {
-        "id": "kh"
+        "id": "king_h"
     },
     {
-        "id": "ad"
+        "id": "ace_d"
     },
     {
-        "id": "2d"
+        "id": "two_d"
     },
     {
-        "id": "3d"
+        "id": "three_d"
     },
     {
-        "id": "4d"
+        "id": "four_d"
     },
     {
-        "id": "5d"
+        "id": "five_d"
     },
     {
-        "id": "6d"
+        "id": "six_d"
     },
     {
-        "id": "7d"
+        "id": "seven_d"
     },
     {
-        "id": "8d"
+        "id": "eight_d"
     },
     {
-        "id": "9d"
+        "id": "nine_d"
     },
     {
-        "id": "10d"
+        "id": "ten_d"
     },
     {
-        "id": "jd"
+        "id": "jack_d"
     },
     {
-        "id": "qd"
+        "id": "queen_d"
     },
     {
-        "id": "kd"
+        "id": "king_d"
     }
 
 ]
 
 module.exports = {
-    deck: deck
+    deck : deck
 };
