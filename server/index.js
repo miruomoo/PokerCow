@@ -4,7 +4,7 @@ const http = require("http");
 const { Server } = require('socket.io');
 const cors = require("cors");
 
-const deck = require('./deck.js');
+const data = require('./data.js');
 
 app.use(cors());
 
@@ -26,11 +26,26 @@ io.on("connection", (socket)=>{
 
     socket.on("send_message", (data)=>{
         socket.to(data.room).emit("receive_message", data)
-    })
+    });
 
     socket.on("start_game", ()=>{
-        socket.to(data.room).emit("receive_game_start", deck.deck)
-    })
+        let gameDeck = data.deck;
+        
+        let data = {
+            playerHand1:"",
+            playerHand2:""
+        };
+
+        const randomCard1 = gameDeck[Math.floor(Math.random() * gameDeck.length)];
+        data.playerHand1 = gameDeck[randomCard1].id;
+        gameDeck.splice(randomCard1, 1);
+
+        const randomCard2 = gameDeck[Math.floor(Math.random() * gameDeck.length)];
+        data.playerHand2 = gameDeck[randomCard2].id;
+        gameDeck.splice(randomCard2, 1);
+
+        socket.to(data.room).emit("receive_game_start", data)
+    });
 })
 
 server.listen(3001, ()=>{

@@ -14,6 +14,14 @@ function Game({ socket, room, messagesReceived, setMessagesReceived, message, se
     const [peek, setPeek] = useState(false);
     const [leaving, setLeaving] = useState(false);
     const [running, setRunning] = useState(false);
+    const [hand, setHand] = useState([]);
+
+    useEffect(() => {
+        socket.on("receive_game_start", (data) => {
+          setHand([data.playerHand1, data.playerHand2])
+        });
+        setRunning(true);
+      }, [])
 
     function peekHand() {
         setPeek(true);
@@ -41,6 +49,10 @@ function Game({ socket, room, messagesReceived, setMessagesReceived, message, se
 
     function handleNotLeaving() {
         setLeaving(false);
+    }
+
+    function startGame(){
+        socket.emit("start_game");
     }
 
     return (
