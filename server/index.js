@@ -31,23 +31,30 @@ io.on("connection", (socket)=>{
     socket.on("start_game", (data)=>{
         let gameDeck = deckData.deck;
         
-        let hand = {
+        let roundData = {
             playerHand1:"ace_s",
-            playerHand2:"king_s"
+            playerHand2:"king_s",
+            flop: [],
         };
 
-        // const randomCard1 = gameDeck[Math.floor(Math.random() * gameDeck.length)];
-        // hand.playerHand1 = randomCard1.id;
-        // gameDeck.splice(randomCard1, 1);
+        const randomCard1 = Math.floor(Math.random() * gameDeck.length);
+        roundData.playerHand1 = gameDeck[randomCard1].id;
+        gameDeck.splice(randomCard1, 1);
+        const randomCard2 = Math.floor(Math.random() * gameDeck.length);
+        roundData.playerHand2 = gameDeck[randomCard2].id;
+        gameDeck.splice(randomCard2, 1);
 
-        // const randomCard2 = gameDeck[Math.floor(Math.random() * gameDeck.length)];
-        // hand.playerHand2 = randomCard2.id;
-        // gameDeck.splice(randomCard2, 1);
+        //Flop
+        for (let i = 0; i<3; i++){
+            let randomCard = Math.floor(Math.random() * gameDeck.length);
+            roundData.flop.push(gameDeck[randomCard].id);
+            gameDeck.splice(randomCard, 1);
+        };
 
-        console.log(hand);
+        console.log(roundData);
 
-        socket.to(data.room).emit("receive_game_start", hand);
-        socket.emit("receive_game_start", hand);
+        socket.to(data.room).emit("receive_game_start", roundData);
+        socket.emit("receive_game_start", roundData);
     });
 })
 

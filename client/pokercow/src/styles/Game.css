@@ -50,25 +50,32 @@
 
 .handback{
     cursor: pointer;
-    max-width: 150px;
+    max-width: 120px;
     position: absolute;
-    top: 55%;
+    top: 58%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.card {
-    max-height: 200px;
-    max-width: 150px;
-    margin: 0;
 }
 
 .hand {
     position: absolute;
-    top: 55%;
+    top: 58%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
+}
+
+.flop{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+}
+
+.card {
+    max-width: 120px;
+    margin: 0;
 }
 
 .leaveroom{
