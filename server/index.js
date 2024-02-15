@@ -17,11 +17,19 @@ const io = new Server(server, {
     }
 });
 
+const playerMap = {};
+
 io.on("connection", (socket)=>{
+    
     console.log(`User Connected: ${socket.id}`);
 
     socket.on("join_room", (data) => {
         socket.join(data);
+        if (!playerMap[data]){
+            playerMap[data] = []
+        }else{
+            playerMap[data].push()
+        }
     });
 
     socket.on("send_message", (data)=>{
@@ -37,6 +45,7 @@ io.on("connection", (socket)=>{
             flop: [],
         };
 
+        //Hand
         const randomCard1 = Math.floor(Math.random() * gameDeck.length);
         roundData.playerHand1 = gameDeck[randomCard1].id;
         gameDeck.splice(randomCard1, 1);
@@ -53,7 +62,7 @@ io.on("connection", (socket)=>{
 
         console.log(roundData);
 
-        socket.to(data.room).emit("receive_game_start", roundData);
+        socket.to(data).emit("receive_game_start", roundData);
         socket.emit("receive_game_start", roundData);
     });
 })
