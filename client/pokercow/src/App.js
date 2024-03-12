@@ -22,10 +22,18 @@ function App() {
     });
     return () => socket.off('recieve_message').off();
   }, [])
+
+  useEffect(() => {
+    socket.on("player_joined", (data) => {
+      setMessagesReceived(messagesReceived => [...messagesReceived, {class:"player_joined", message:`${data.playerName} has joined the room.`}]);
+      console.log(data.playerName);
+    });
+    return () => socket.off('player_joined').off();
+  }, [])
   
   return (
     <div className='App'>
-      {!inRoom && <Landing inRoom={inRoom} setRoom={setRoom} setInRoom={setInRoom} socket={socket} room={room} setNickname={setNickname}></Landing>}
+      {!inRoom && <Landing inRoom={inRoom} setRoom={setRoom} setInRoom={setInRoom} socket={socket} room={room} setNickname={setNickname} playerName={nickname}></Landing>}
       <Game 
       socket={socket}
       room={room}

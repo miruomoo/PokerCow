@@ -48,6 +48,11 @@
     color: black;
 }
 
+.player_joined{
+    margin-left: 5px;
+    color: green;
+}
+
 .handback{
     cursor: pointer;
     max-width: 120px;

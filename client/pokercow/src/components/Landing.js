@@ -1,9 +1,9 @@
 import "../styles/Landing.css";
 
-function Landing({ inRoom, setInRoom, setRoom, socket, room, setNickname }) {
+function Landing({ inRoom, setInRoom, setRoom, socket, room, setNickname, playerName}) {
 
     function joinRoom() {
-        socket.emit("join_room", room);
+        socket.emit("join_room", {room, playerName});
         setInRoom(true);
     }
 

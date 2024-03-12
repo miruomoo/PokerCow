@@ -24,7 +24,8 @@ io.on("connection", (socket)=>{
     console.log(`User Connected: ${socket.id}`);
 
     socket.on("join_room", (data) => {
-        socket.join(data);
+        socket.join(data.room);
+        socket.to(data.room).emit("player_joined", data)
         if (!playerMap[data]){
             playerMap[data] = []
         }else{
