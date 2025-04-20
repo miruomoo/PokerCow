@@ -8,7 +8,7 @@ All assets were hand-drawn in **Microsoft Paint** 🎨🐄
 
 ## 🕹️ Features
 
-- Real-time multiplayer functionality using WebSockets  
+- Real-time multiplayer functionality and chatting using WebSockets  
 - Custom hand-drawn poker assets  
 - Persistent data storage with PostgreSQL
 
